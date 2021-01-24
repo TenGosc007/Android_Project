@@ -24,7 +24,6 @@ public class modules extends Activity {
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_IP = "ip_key";
     public static final String KEY_PORT = "port_key";
-
     private String ip_key, port_key;
 
     public String       IP =            "192.168.001.204";  //IP of Modbus TCP server 192.168.001.204
@@ -48,21 +47,7 @@ public class modules extends Activity {
         IP = ip_key;
         port = port_key;
 
-        Intent myLocalIntent = getIntent();
-        Bundle bundle = myLocalIntent.getExtras();
-        String title = bundle.getString("key", "Default");
-
-        // Set the panel title
-        if(title != null && !title.isEmpty()) {
-            textOutput.setText(title);
-            bundle.putString("key2", "Home");
-        }
-        else {
-            textOutput.setText("Nothing");
-            bundle.putString("key2", "Empty message!");
-        }
-        myLocalIntent.putExtras(bundle);
-        setResult(Activity.RESULT_OK, myLocalIntent);
+        navPanel();
 
         // Buttons
         modbusButtonRead.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +73,24 @@ public class modules extends Activity {
                         InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
+    }
+
+    public void navPanel() {
+        Intent myLocalIntent = getIntent();
+        Bundle bundle = myLocalIntent.getExtras();
+        String title = bundle.getString("key", "Default");
+
+        // Set the panel title
+        if(title != null && !title.isEmpty()) {
+            textOutput.setText(title);
+            bundle.putString("key2", "Home");
+        }
+        else {
+            textOutput.setText("Nothing");
+            bundle.putString("key2", "Empty message!");
+        }
+        myLocalIntent.putExtras(bundle);
+        setResult(Activity.RESULT_OK, myLocalIntent);
     }
 
     public void onOptionClicked(View view) {

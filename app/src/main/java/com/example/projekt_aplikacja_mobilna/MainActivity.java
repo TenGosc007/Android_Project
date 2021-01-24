@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         led1 = findViewById(R.id.checkBox1);
         led2 = findViewById(R.id.checkBox2);
         sendBtn = findViewById(R.id.sendButton);
-
     }
 
     public void onOptionClicked(View view) {

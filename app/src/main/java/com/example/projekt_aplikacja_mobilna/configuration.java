@@ -35,20 +35,7 @@ public class configuration extends Activity {
         configPort = findViewById(R.id.configPort);
         configButton = findViewById(R.id.configButton);
 
-        Intent myLocalIntent = getIntent();
-        Bundle bundle = myLocalIntent.getExtras();
-        String title = bundle.getString("key", "Default");
-
-        if(title != null && !title.isEmpty()) {
-            textOutput.setText(title);
-            bundle.putString("key2", "Home");
-        }
-        else {
-            textOutput.setText("Nothing");
-            bundle.putString("key2", "Empty message!");
-        }
-        myLocalIntent.putExtras(bundle);
-        setResult(Activity.RESULT_OK, myLocalIntent);
+        navPanel();
 
         configButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +51,23 @@ public class configuration extends Activity {
 
         loadData();
         updateViews();
+    }
+
+    public void navPanel() {
+        Intent myLocalIntent = getIntent();
+        Bundle bundle = myLocalIntent.getExtras();
+        String title = bundle.getString("key", "Default");
+
+        if(title != null && !title.isEmpty()) {
+            textOutput.setText(title);
+            bundle.putString("key2", "Home");
+        }
+        else {
+            textOutput.setText("Nothing");
+            bundle.putString("key2", "Empty message!");
+        }
+        myLocalIntent.putExtras(bundle);
+        setResult(Activity.RESULT_OK, myLocalIntent);
     }
 
     public void onOptionClicked(View view) {
